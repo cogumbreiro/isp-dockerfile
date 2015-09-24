@@ -1,0 +1,6 @@
+#!/bin/bash
+docker run -v "$PWD:/home" \
+	-it --rm isp /sbin/my_init --quiet -- \
+	"/usr/bin/mpicxx" "-L/usr/local/lib" "-I/usr/local/include/isp" \
+	-Wl,-rpath=/usr/local/lib -include isp.h $* -lisp_prof -lmpi_cxx
+

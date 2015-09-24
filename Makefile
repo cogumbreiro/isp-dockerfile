@@ -1,5 +1,5 @@
 
-DOCKER = sudo docker
+DOCKER = docker
 IMAGE = isp
 
 
@@ -7,4 +7,4 @@ build:
 	$(DOCKER) build -t $(IMAGE) .
 
 run:
-	$(DOCKER) run -it --rm $(IMAGE)
+	$(DOCKER) run -v "$(PWD):/home" -it --rm $(IMAGE)

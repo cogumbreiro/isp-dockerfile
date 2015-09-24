@@ -1,0 +1,8 @@
+#!/bin/bash
+test -z "$ISP_NUMPROCS" && export ISP_NUMPROCS=2
+docker run -v "$PWD:/home" \
+	-h localhost \
+	-e ISP_USE_ENV=1 -e ISP_UNIX_SOCKETS=0 -e ISP_HOSTNAME=localhost \
+	-e ISP_PORT=9999 -e ISP_NUMPROCS -e ISP_SENDBLOCK=0 \
+	-it --rm isp /sbin/my_init --quiet -- isp "$@"
+
